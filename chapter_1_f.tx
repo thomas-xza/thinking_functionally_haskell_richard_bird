@@ -1,0 +1,46 @@
+
+EXERCISE 1.F
+
+
+target composite function:
+
+  anagrams :: Int -> [Word] -> String
+
+
+underlying functions:
+
+  check_if_length_n :: Int -> [Word] -> [Word]
+
+  map alpha_count :: Word -> (Word, [Char])
+
+  //  for example, 'bed' alpha count would be: 0101100000...
+  //                                           abcdefghij...
+
+  check_for_anagrams :: [Word] -> [(Word, [Char])]
+				-> [(Word, [Char], Bool)]
+
+  //  deduce if a word is an anagram via a given dictionary
+  //  if haskell has a hash data struct, this is O(n), else O(n^2)
+
+  find_alpha_matches :: [(Word, [Char], Bool)] -> [[Word]]
+
+    map compare_counts :: (Word, [Char], Bool)
+				-> [(Word, [Char], Bool)]
+				-> [Word]
+
+    //  select anagrams via bool, then compare alphabetic counts
+    //  with every other word. final output is anagram set.
+    //  this algo is O(n^2)
+
+  format_output :: [[Word]] -> String
+
+  anagrams n :: format_output . find_alpha_matches .
+		check_for_anagrams . map alpha_count .
+		check_if_length_n n
+
+
+NOTE: there was some misunderstanding of original problem;
+      it was thought that non-dictionary anagrams featured
+      in the origin given set of words.
+
+

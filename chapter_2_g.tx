@@ -1,0 +1,18 @@
+n_endings = ["st", "nd", "rd", "th"]
+
+find_ending n
+	| n_mod == 1	= n_endings!!0
+	| n_mod == 2	= n_endings!!1
+	| n_mod == 3	= n_endings!!2
+	| otherwise	= n_endings!!3
+	where n_mod = n `mod` 10
+
+months = ["jan" "feb", "mar" ... ]
+
+month_string n = months!!(n-1)
+
+
+show d m y = show d ++ find_ending d ++
+		" " ++ month_string m ++ ", " show y
+
+

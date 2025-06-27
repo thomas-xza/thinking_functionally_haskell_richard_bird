@@ -1,0 +1,28 @@
+
+head (map f xs)
+
+eager evaluation:	n evaluations of f, where n is length of list
+
+lazy evaluation:	potentially only 1 evaluation
+
+
+optimisation for eager eval:
+
+f . head xs
+
+
+eager evaluation is problematic for:
+
+head . filter p
+
+... as every element in the list would have the function p applied to
+	it, yet only the 1st element would be extracted
+
+
+check_first_for_match :: (a -> Bool) -> [a] -> a
+		first p xs	| null xs = error "Empty list"
+				| p x = x
+				| otherwise = error "False match"
+		where x = head xs
+
+

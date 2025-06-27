@@ -1,0 +1,52 @@
+
+The function isqrt :: Float -> Integer returns the ﬂoor of the square root
+of a (nonnegative) number. Following the strategy of Section 3.3, construct an im-
+plementation of isqrt x that takes time proportional to log x steps.
+
+----
+
+Sandbox
+
+
+Target: 49
+
+2 * 2
+3 * 3
+4 * 4 ...
+
+O(n) algorithm
+
+2 * 2
+4 * 4	low
+8 * 8	high
+6 * 6	low
+7 * 7
+
+O(logn) algorithm?
+
+
+4.5 rounded down is 4, square root of 4.5 is 2.121, floor being 2
+
+3.5 rounded down is 3, square root of 3.5 is 1.871, floor being 1, same as 3
+
+----
+
+Algorithm steps
+
+0. Convert float to integer by rounding down
+1. Start with square of 2
+2. Double the square until an upper bound is found
+3. Adjust the lower and upper bounds until target reached, via binary search
+
+----
+
+Functions
+
+isqrt :: Float -> Integer
+
+isqrt x = fst (until bound_diff_one (shrink x) (bound x)) 
+	  where bound_diff_one (m, n) = (m + 1 == n)
+
+recalibrate_bounds :: (Integer -> Integer -> Integer) -> (Integer -> Integer)
+
+recalibrate_bounds m n = 

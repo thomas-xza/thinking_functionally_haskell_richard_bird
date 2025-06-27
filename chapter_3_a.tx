@@ -1,0 +1,10 @@
+
+
+subtract 2 3
+= 3 - 2
+= 1
+
+2 + subtract 3
+= Num a + f
+!= 1
+

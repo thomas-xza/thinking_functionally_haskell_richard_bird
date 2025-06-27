@@ -1,0 +1,20 @@
+
+
+words :: String -> [Word]
+
+map capitalise :: [Char] -> [Char]
+
+unwords :: [Word] -> String
+
+
+modernise title = unwords . map capitalise . words title
+
+unwords set 
+ | null set	= ""
+ | otherwise	= head set ++ " " ++ unwords . tail set
+
+words str = ...
+
+map capitalise word = [toUpper (head word)] ++ tail word
+
+

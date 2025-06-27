@@ -1,0 +1,30 @@
+
+EXERCISE 1.G
+
+Write a Haskell function song :: Int -> String so that song n is the song
+when there are n men. Assume n<10.
+
+
+song n = if n==0 then ""
+	 else song (n-1) ++ "\n" ++ verse n
+
+verse n = line1 n ++
+	  repeat_line ++
+	  capitalise line3 n ++
+	  repeat_line
+
+repeat_line = "Went to mow a meadow\n"
+
+units = ["zero", "one", "two", "three" ...]
+
+line1 n = units!!n ++ plural_male n ++ "went to mow"
+
+plural_male n
+  | n == 1	= " man "
+  | n > 1	= " men "
+
+line3 n = 
+  | n == 1	= "one man and his dog"
+  | n > 1	= units!!n ++ "men," ++ line3 (n-1)
+
+capitalise :: [Char] -> [Char]

@@ -1,0 +1,26 @@
+
+sum_digits :: [Char] -> Int
+
+sum_digits xs
+	| null xs	= 0
+	| otherise	= read head xs :: Int + sum_digits tail xs
+
+print_cin :: [Char] -> [Char] 
+
+print_cin l = l ++ show sum_digits l
+
+
+---  Note: There is already a standard library function, `sum`,
+---        but it expects Num types
+
+
+take :: Int -> [a] -> [a]
+
+valid_cin :: [Char] -> Bool
+
+valid_cin l =
+	checksum_expected == checksum_found
+	where checksum_expected = sum_digits (take 8 l)
+	where checksum_found = read (drop 8 l) :: Int
+
+

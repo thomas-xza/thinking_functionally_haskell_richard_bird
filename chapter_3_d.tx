@@ -1,0 +1,14 @@
+
+floor :: Float -> Integer
+floor = read . (takeWhile (/= '.') . show
+
+Float -> [Char] -> Integer
+
+Doesn't work because...
+
+- float may not necessarily contain a dot ?
+- `show` can take any type ?
+- a type was not specified to `read` in the function definition ?
+- doesn't work for exponent notation ?
+
+	

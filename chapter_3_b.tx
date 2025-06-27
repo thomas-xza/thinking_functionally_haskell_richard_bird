@@ -1,0 +1,26 @@
+
+exp :: Integer -> Integer -> Integer
+
+exp x n | n == 0 = 1
+	| n == 1 = x
+	| even n = exp (x * x) m
+	| odd n = x * exp (x * x) (m - 1)
+	where m = n `div` 2
+
+
+class (Num a) => Fractional a where
+	(/) :: a -> a -> a
+	fromRational :: Rational -> a
+
+class (Real a, Enum a) => Integral a where
+	divMod :: a -> a -> (a,a)
+	toInteger :: a -> Integer
+
+
+(^^) :: (Fractional a, Integral b) => a -> b -> a
+
+(^^) x n
+	| n == 0  = 1
+	| n < 0	  = 1 / (x ^ (negate n))
+	| n > 0   = x ^ n
+

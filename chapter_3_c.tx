@@ -1,0 +1,27 @@
+
+div :: Integral a => a -> a -> a
+
+div n k = n `div` 10 = n // 10
+
+
+div x y = floor (x/y) ??
+
+
+x > 0, y > 0
+
+	6 / 4 = 1.5
+	floor(1.5) = 1
+
+
+x > 0, y < 0
+
+	6 / -4 = -1.5
+	floor(-1.5) = -2
+
+
+However...
+
+6 `div` -4 = -1
+
+Therefore floor(-1.5) is incorrect.
+

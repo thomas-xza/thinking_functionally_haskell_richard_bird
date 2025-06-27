@@ -1,0 +1,64 @@
+
+The following function is O(n)...
+
+	exp x n | n == 0 = 1
+		| n == 1 = x
+		| otherwise = x*exp x (n-1)
+
+exp 2 4
+
+2 * exp 2 3
+
+2 * 2 * exp 2 2
+
+2 * 2 * 2 * exp 2 1
+
+2 * 2 * 2 * 2
+
+
+The following function is O(logn) steps, but maybe not computations...
+
+	exp x n | n == 0 = 1
+		| n == 1 = x
+		| even n = exp x (n/2) * exp x (n/2)
+		| odd n = x * exp x (n-1)
+
+exp 2 4
+
+exp 2 2 * exp 2 2
+
+(exp 2 1 * exp 2 1) * (exp 2 1 * exp 2 1)
+
+2 * 2 * 2 * 2
+
+
+The folloing function is allegedly O(logn) computations...
+
+	exp x n | n == 0 = 1
+		| n == 1 = x
+		| even n = exp (x*x) m
+		| odd n = x*exp (x*x) (m-1)
+	where m = n `div` 2
+
+exp 2 4
+
+exp (4) 2
+
+exp (8) 1
+
+
+
+Arguably most simple syntax for O(logn) computations...
+
+	exp x n | n == 0 = 1
+		| n == 1 = x
+		| even n = exp (x*x) (n/2)
+		| odd n = x * exp x (n-1)
+
+
+exp 2 4
+
+exp 4 2
+
+exp 8 1
+
